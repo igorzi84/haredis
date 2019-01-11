@@ -5,13 +5,12 @@ services:
     ports:
       - "6379:6379"
     environment:
-      - ROLE=master
-    command: bash -c "/usr/local/bin/start.sh"
+      - REDIS_ROLE=master
   redis-slave:
     build: sentinel
     environment:
-      - ROLE=slave
-    command: bash -c "/usr/local/bin/start.sh"
+      - REDIS_ROLE=slave
   sentinel:
     build: sentinel
-    command: redis-sentinel /etc/sentinel.conf
+    environment:
+      - REDIS_ROLE=slave
