@@ -8,9 +8,10 @@ services:
       - REDIS_ROLE=master
   redis-slave:
     build: sentinel
+    ports:
+      - "6380:6379"
     environment:
       - REDIS_ROLE=slave
   sentinel:
     build: sentinel
-    environment:
-      - REDIS_ROLE=slave
+    

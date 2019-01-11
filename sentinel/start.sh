@@ -6,4 +6,3 @@ if [[ $REDIS_ROLE == 'slave' ]]; then
 else
     redis-server
 fi
-    
