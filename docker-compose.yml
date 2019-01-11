@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis-master:
+    build: sentinel
+    ports:
+      - "6379:6379"
+    environment:
+      - ROLE=master
+    command: bash -c "/usr/local/bin/start.sh"
+  redis-slave:
+    build: sentinel
+    environment:
+      - ROLE=slave
+    command: bash -c "/usr/local/bin/start.sh"
+  sentinel:
+    build: sentinel
+    command: redis-sentinel /etc/sentinel.conf
