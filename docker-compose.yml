@@ -1,17 +1,17 @@
 version: '3'
 services:
   redis-master:
-    build: sentinel
+    build: redis
     ports:
       - "6379:6379"
     environment:
       - REDIS_ROLE=master
   redis-slave:
-    build: sentinel
+    build: redis
     ports:
       - "6380:6379"
     environment:
       - REDIS_ROLE=slave
   sentinel:
-    build: sentinel
+    build: redis
     
