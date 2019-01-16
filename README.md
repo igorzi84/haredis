@@ -19,8 +19,9 @@ docker-compose up --build
 
 ```
 telnet <docker host> 6379
+info
 ```
 or
 ```
-redis-cli -h <docker host> -p 6379
+redis-cli -h <docker host> -p 6379 info
 ```
