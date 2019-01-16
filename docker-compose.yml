@@ -1,17 +1,24 @@
 version: '3'
 services:
-  redis-master:
-    build: redis
+  haproxy:
+    restart: always
+    build: haproxy
     ports:
-      - "6379:6379"
+      - '6379:6379'
+    depends_on:
+      - redis-master
+      - redis-slave
+  redis-master:
+    restart: always
+    build: redis
     environment:
       - REDIS_ROLE=master
   redis-slave:
+    restart: always
     build: redis
-    ports:
-      - "6380:6379"
     environment:
       - REDIS_ROLE=slave
   sentinel:
+    restart: always
     build: redis
     
