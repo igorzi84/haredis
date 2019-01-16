@@ -6,4 +6,4 @@ elif [[ $REDIS_ROLE == 'master' ]]; then
     redis-server /etc/redis.conf &
 fi
 
-redis-sentinel /etc/sentinel.conf 
+redis-sentinel /etc/sentinel.conf

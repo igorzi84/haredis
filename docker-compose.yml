@@ -21,4 +21,3 @@ services:
   sentinel:
     restart: always
     build: redis
-    
